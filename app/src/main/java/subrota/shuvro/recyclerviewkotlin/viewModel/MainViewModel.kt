@@ -5,7 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import subrota.shuvro.recyclerviewkotlin.model.UserDataClass
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
-    fun getUser() = listOf(
+    private fun getUser() = arrayListOf<UserDataClass>(
             UserDataClass("Bidyut Debnath", "Developer"),
             UserDataClass("Saikat Roy", "Developer"),
             UserDataClass("Sumon Debnath", "Engineer"),
@@ -13,5 +13,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             UserDataClass("Subrota Debnath", "Bekar"),
     )
 
-    val dataSets: List<UserDataClass> =getUser()
+    val dataSets: ArrayList<UserDataClass> =getUser()
+
 }
