@@ -11,8 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 import subrota.shuvro.recyclerviewkotlin.R
 import subrota.shuvro.recyclerviewkotlin.adapter.UserAdapter.ViewHolder
 import subrota.shuvro.recyclerviewkotlin.model.UserDataClass
+import subrota.shuvro.recyclerviewkotlin.view.UserProfile
 
- class UserAdapter(private val users: ArrayList<UserDataClass>, val context: Context): RecyclerView.Adapter<UserAdapter.ViewHolder>() {
+class UserAdapter(private val users: ArrayList<UserDataClass>, val context: Context): RecyclerView.Adapter<UserAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.user_row_view, parent, false)
@@ -33,7 +34,10 @@ import subrota.shuvro.recyclerviewkotlin.model.UserDataClass
             itemView.findViewById<TextView>(R.id.nameTV).text = user.name
             itemView.findViewById<TextView>(R.id.occupationTV).text = user.occupation
             itemView.setOnClickListener {
-                itemView.context.startActivity(Intent(itemView.context, ))
+                val intent = Intent(itemView.context, UserProfile::class.java)
+                intent.putExtra("name", user.name)
+                intent.putExtra("occupation", user.occupation)
+                itemView.context.startActivity(intent)
             }
         }
     }
