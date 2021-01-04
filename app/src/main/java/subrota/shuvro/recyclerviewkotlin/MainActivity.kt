@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         val mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        val adapter = UserAdapter(mainViewModel.dataSets)
+        val adapter = UserAdapter(mainViewModel.dataSets, this)
 
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
